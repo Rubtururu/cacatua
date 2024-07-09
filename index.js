@@ -7,7 +7,7 @@ const { Telegraf } = require('telegraf');
 const app = express();
 app.use(bodyParser.json());
 
-const botToken = '7209539640:AAHiscqStO8mpy8aurPL6bunDFAtFfIy258'; // Reemplaza con el token de tu bot de Telegram
+const botToken = '7209539640:AAHiscqStO8mpy8aurPL6bunDFAtFfIy258'; // Reemplaza con el token de tu bot
 const bot = new Telegraf(botToken);
 
 const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC'));
@@ -21,14 +21,17 @@ const users = {};
 
 // Configurar el bot de Telegram
 bot.start((ctx) => {
-    ctx.reply('Welcome! Send /register to register your username.');
+    ctx.reply('Bienvenido! Envía /register para registrar tu nombre de usuario.');
 });
 
 bot.command('register', (ctx) => {
     const userId = ctx.from.id;
     const username = ctx.from.username;
+
+    // Almacenar el nombre de usuario en una estructura de datos (por ejemplo, un objeto)
     users[userId] = username;
-    ctx.reply(`Registered with username: ${username}`);
+
+    ctx.reply(`Registrado con nombre de usuario: ${username}`);
 });
 
 bot.launch();
@@ -39,7 +42,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Ruta para manejar depósitos
 app.post('/deposit', async (req, res) => {
     const { amount, userId } = req.body;
-    // Aquí puedes usar userId para verificar la identidad del usuario si lo deseas
     res.json({ message: 'Depósito recibido. Procesando...', amount, userId });
 });
 
@@ -58,6 +60,17 @@ app.post('/withdraw', async (req, res) => {
         res.json({ message: 'Retiro realizado con éxito', amount, toAddress });
     } catch (error) {
         res.status(500).json({ message: 'Error en el retiro', error: error.message });
+    }
+});
+
+// Ruta para obtener el nombre de usuario de Telegram
+app.post('/get-username', (req, res) => {
+    const { userId } = req.body;
+    const username = users[userId];
+    if (username) {
+        res.json({ username });
+    } else {
+        res.status(404).json({ message: 'Nombre de usuario no encontrado' });
     }
 });
 
