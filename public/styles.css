@@ -1,0 +1,179 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2c3e50; /* Fondo oscuro */
+    color: #ecf0f1; /* Texto blanco */
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; /* Tamaño ajustado para smartphone */
+    background-color: #34495e; /* Fondo más oscuro */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Para posicionamiento relativo en los elementos hijos */
+    overflow: hidden; /* Ocultar contenido que se desborde */
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra al texto */
+    position: relative; /* Posicionamiento relativo para elementos hijos */
+    z-index: 1; /* Z-index para mantener texto sobre efectos */
+}
+
+.game-info {
+    margin-bottom: 20px;
+    color: #bdc3c7; /* Color de texto más claro */
+    position: relative;
+    z-index: 1;
+}
+
+.timer {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    background-color: #2c3e50; /* Fondo para destacar */
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.ranking {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2c3e50; /* Separación visual */
+    padding-bottom: 10px;
+    max-height: 300px; /* Altura máxima del ranking */
+    overflow-y: auto; /* Activar scroll vertical si es necesario */
+    position: relative;
+    z-index: 1;
+}
+
+.user-list-container {
+    width: 100%;
+}
+
+#user-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap; /* Evitar saltos de línea */
+    position: relative;
+    z-index: 1;
+}
+
+#user-list li {
+    display: block; /* Mostrar en bloque */
+    margin-bottom: 6px; /* Espacio entre elementos */
+    padding: 8px;
+    background-color: #2c3e50; /* Fondo más oscuro para cada ítem */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#press-button {
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    background-color: #3498db; /* Color de fondo del botón */
+    color: #ecf0f1;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+#press-button:hover {
+    background-color: #2980b9; /* Color de fondo al pasar el mouse */
+}
+
+#press-button:active {
+    transform: scale(0.95); /* Efecto de escala al presionar */
+}
+
+.pool-total {
+    margin-top: 20px;
+    font-size: 1.8rem; /* Tamaño grande para el precio del bote */
+    color: #bdc3c7;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Sombra al texto con color */
+    position: relative;
+    z-index: 1;
+}
+
+.current-cost {
+    margin-top: 10px;
+    font-size: 1.5rem; /* Tamaño grande para el precio por moneda */
+    color: #bdc3c7;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Sombra al texto con color */
+    position: relative;
+    z-index: 1;
+}
+
+/* Efectos de fondo */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle closest-side, #00c6ff, #0072ff);
+    z-index: 0;
+    animation: neon-glow 4s linear infinite;
+}
+
+@keyframes neon-glow {
+    0% {
+        transform: translate(-25%, -25%);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(25%, 25%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-25%, -25%);
+        opacity: 0.5;
+    }
+}
+
+/* Efectos de luces */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+    animation: lights 2s linear infinite;
+}
+
+@keyframes lights {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
