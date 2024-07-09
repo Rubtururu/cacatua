@@ -7,7 +7,7 @@ const { Telegraf } = require('telegraf');
 const app = express();
 app.use(bodyParser.json());
 
-const botToken = '7209539640:AAHiscqStO8mpy8aurPL6bunDFAtFfIy258';
+const botToken = '7209539640:AAHiscqStO8mpy8aurPL6bunDFAtFfIy258'; // Reemplaza con el token de tu bot de Telegram
 const bot = new Telegraf(botToken);
 
 const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC'));
@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Ruta para manejar depósitos
 app.post('/deposit', async (req, res) => {
     const { amount, userId } = req.body;
+    // Aquí puedes usar userId para verificar la identidad del usuario si lo deseas
     res.json({ message: 'Depósito recibido. Procesando...', amount, userId });
 });
 
