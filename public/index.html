@@ -20,7 +20,7 @@
         </div>
 
         <div class="current-cost">
-            <p>Costo actual del botón: <span id="current-cost">1</span> Ton</p>
+            <p> <span id="current-cost">1</span> Ton</p>
         </div>
         <button id="press-button">Presionar Botón</button>
 
@@ -28,40 +28,27 @@
             <p>Pool: <span id="pool-total">0</span> Ton</p>
         </div>
 
-        <!-- Recuadro para mostrar la cantidad de TON en el proyecto -->
+        <div class="deposit-withdraw">
+            <h2>Depósito y Retiro</h2>
+            <div>
+                <label for="deposit-amount">Cantidad a Depositar:</label>
+                <input type="number" id="deposit-amount" placeholder="Cantidad en Ton">
+                <button id="deposit-button">Depositar</button>
+            </div>
+            <div>
+                <label for="withdraw-amount">Cantidad a Retirar:</label>
+                <input type="number" id="withdraw-amount" placeholder="Cantidad en Ton">
+                <label for="withdraw-address">Dirección de Retiro:</label>
+                <input type="text" id="withdraw-address" placeholder="Dirección">
+                <button id="withdraw-button">Retirar</button>
+            </div>
+        </div>
+
         <div class="project-balance">
             <h2>Balance del Proyecto</h2>
-            <p>Cantidad de TON: <span id="project-balance">0</span></p>
+            <p>Balance actual: <span id="project-balance">0</span> Ton</p>
         </div>
 
-        <!-- Formulario para depósito de TON -->
-        <div class="deposit-section">
-            <h2>Depósito de TON</h2>
-            <label for="deposit-amount">Cantidad:</label>
-            <input type="number" id="deposit-amount" min="1" step="1" required>
-            <br>
-            <label for="user-id">ID de usuario Telegram:</label>
-            <input type="text" id="user-id" required>
-            <br>
-            <button id="deposit-button">Depositar</button>
-        </div>
-
-        <!-- Formulario para retiro de TON -->
-        <div class="withdraw-section">
-            <h2>Retiro de TON</h2>
-            <label for="withdraw-amount">Cantidad:</label>
-            <input type="number" id="withdraw-amount" min="1" step="1" required>
-            <br>
-            <label for="withdraw-address">Dirección de retiro:</label>
-            <input type="text" id="withdraw-address" required>
-            <br>
-            <label for="user-id">ID de usuario Telegram:</label>
-            <input type="text" id="user-id" required>
-            <br>
-            <button id="withdraw-button">Retirar</button>
-        </div>
-
-        <!-- Ranking de usuarios -->
         <div class="ranking">
             <h2>Ranking</h2>
             <div class="user-list-container">
@@ -70,6 +57,7 @@
                 </ul>
             </div>
         </div>
+
     </div>
 
     <script src="script.js"></script>
